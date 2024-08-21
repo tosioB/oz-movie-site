@@ -4,7 +4,7 @@ import data from "../assets/data/movieDetailData.json"
 
 function Detail() {
   const [movieData, setMovieData] = useState(data);
-  console.log(movieData)
+  console.log(movieData.genres)
   // const params = useParams();
   return (
     <>
@@ -21,7 +21,14 @@ function Detail() {
             <div className="info">
               <span>런타임: {data.runtime}분</span>
               <span>평점: {data.vote_average}</span>
+              <ul className="genre">
+                {
+                  data.genres.map((genre, index) => {
+                    return <li key={index}>{genre.name}</li>
+                  })}
+              </ul>
             </div>
+            
             <p className="desc">{data.overview}</p>
           </div>
         </div>

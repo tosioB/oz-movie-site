@@ -9,7 +9,6 @@ function MovieCard({ data }) {
         <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt={data.title} />
       </span>
       <p className="title">{data.title}</p>
-      {/* <p>id: {data.id}</p> */}
     </li>
   )
 }
