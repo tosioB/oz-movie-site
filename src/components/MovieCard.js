@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { IMG_URL } from "../assets/data/movie_key";
 
 function MovieCard({ data }) {
   const navigate = useNavigate();
@@ -6,7 +7,7 @@ function MovieCard({ data }) {
   return (
     <li onClick={() => {navigate(`Detail/${data.id}`)}}>
       <span className="img-box">
-        <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt={data.title} />
+        <img src={`${IMG_URL + data.poster_path}`} alt={data.title} />
       </span>
       <p className="title">{data.title}</p>
     </li>

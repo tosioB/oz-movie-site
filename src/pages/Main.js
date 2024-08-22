@@ -3,10 +3,11 @@ import data from "../assets/data/movieListData.json"
 import MovieCard from "../components/MovieCard";
 import { Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from "swiper/react";
-import 'swiper/css';
+import { useNavigate } from "react-router-dom";
 
 function Main() {
   const [movieData, setMovieData] = useState(data);
+  const navigate = useNavigate();
   // console.log(movieData.results)
   return (
     <>
@@ -17,10 +18,10 @@ function Main() {
             slidesPerView={1}
             spaceBetween={30}
             // navigation={true}
-            // navigation={{
-            //   prevEl: '.custom-prev',
-            //   nextEl: '.custom-next',
-            // }}
+            navigation={{
+              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next',
+            }}
             pagination={{
               clickable: true,
             }}
@@ -44,7 +45,7 @@ function Main() {
             {
               movieData.results.map((data) => {
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide key={data.id} onClick={() => {navigate(`Detail/${data.id}`)}}>
                     <span className="img-box">
                       <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} />
                     </span>
@@ -52,8 +53,8 @@ function Main() {
                 )
               })
             }
-            {/* <div className="custom-prev">이전</div>
-            <div className="custom-next">다음</div> */}
+            <div className="swiper-button-prev swiper-navigation">이전</div>
+            <div className="swiper-button-next swiper-navigation">다음</div>
           </Swiper>
           <h2 className="section-title">인기순</h2>
           <ul className="movie-list">

@@ -1,20 +1,20 @@
 import { useState } from "react";
 // import { useParams } from "react-router-dom";
 import data from "../assets/data/movieDetailData.json"
+import { IMG_URL } from "../assets/data/movie_key";
 
 function Detail() {
   const [movieData, setMovieData] = useState(data);
-  console.log(movieData.genres)
   // const params = useParams();
   return (
     <>
       <div className="detail-page">
         <span className="bg-img-box">
-          <img src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`} />
+          <img src={IMG_URL + data.backdrop_path} />
         </span>
         <div className="movie-info">
           <span className="img-box">
-            <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt={data.title} />
+            <img src={IMG_URL + data.poster_path} alt={data.title} />
           </span>
           <div className="add-info">
             <h2 className="title">{data.title}</h2>
