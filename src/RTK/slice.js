@@ -1,5 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchNowPlayingMovies, fetchTopRatedMovies } from "./thunk";
+import { fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies } from "./thunk";
+
+export const popularMovieSlice = createSlice({
+  name: 'popularMovies',
+  initialState: {
+    popularData: [], // 영화의 초기값을 담아줄 빈 배열
+    popularLoading: true, // 호출하는 동안의 로딩상태
+    popularError: null,
+  },
+  reducers: {}, // reducers - 동기적으로 상태를 변경할 때 사용
+  extraReducers: (builder) => { // extraReducers - 비동기적으로 상태를 변경할 때 사용
+    builder
+      // fetchPopularMovies - thunk.js에서 가져옴
+      .addCase(fetchPopularMovies.pending, (state) => { // pending - 처리중
+        state.popularLoading = true; // createSlice의 initialState loading은 true
+      })
+      .addCase(fetchPopularMovies.fulfilled, (state, action) => { // fulfilled - 불러오기 성공
+        state.popularData = action.payload;
+        state.popularLoading = false; // createSlice의 initialState loading은 false
+      })
+      .addCase(fetchPopularMovies.rejected, (state, action) => { // reject - 불러오기 실패
+        state.popularLoading = true; // createSlice의 initialState loading은 true
+        state.popularError = action.error.message;
+      })
+  }
+})
 
 export const topRatedMovieSlice = createSlice({
   name: 'topRatedMovies',
