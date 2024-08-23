@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { IMG_URL } from "../assets/data/movie_key";
 
-function MovieCard({ data }) {
+function MovieCard({ movie }) {
   const navigate = useNavigate();
 
   return (
-    <li onClick={() => {navigate(`Detail/${data.id}`)}}>
+    <li onClick={() => {navigate(`Detail/${movie.id}`)}}>
       <span className="img-box">
-        <img src={`${IMG_URL + data.poster_path}`} alt={data.title} />
+        <img src={`${IMG_URL + movie.poster_path}`} alt={movie.title} />
       </span>
-      <p className="title">{data.title}</p>
+      <p className="title">{movie.title}</p>
     </li>
   )
 }

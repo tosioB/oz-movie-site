@@ -1,23 +1,68 @@
-import { useState } from "react";
-import data from "../assets/data/movieListData.json"
+import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import { Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchNowPlayingMovies, fetchTopRatedMovies } from "../RTK/thunk";
 
 function Main() {
-  const [movieData, setMovieData] = useState(data);
-  const navigate = useNavigate();
-  // console.log(movieData.results)
+  const dispatch = useDispatch();
+
+  // topRatedData, topRatedLoading, topRatedError - slice.js에서 initialState의 key값과 동일해야함
+  // nowPlayingData, nowPlayingLoading, nowPlayingError - slice.js에서 initialState의 key값과 동일해야함
+  // topRatedMovies - store.js에서 가져옴
+  const { topRatedData, topRatedLoading, topRatedError } = useSelector((state) => state.topRatedMovies);
+  const { nowPlayingData, nowPlayingLoading, nowPlayingError } = useSelector((state) => state.nowPlayingMovies);
+  console.log(topRatedData)
+  // console.log(nowPlayingData)
+  // const newArray = [...topRatedData, ...nowPlayingData]
+  // console.log(newArray)
+  // console.log(topRatedData)
+
+  useEffect(() => {
+    dispatch(fetchTopRatedMovies()) // fetchTopRatedMovies - thunk.js에서 불러옴
+    dispatch(fetchNowPlayingMovies()) // fetchNowPlayingMovies - thunk.js에서 불러옴
+  }, [dispatch])
+
+  
+  // const [topRatedMovies, setTopRatedMovies] = useState();
+  // const [topRatedLoading, setTopRatedLoading] = useState(true);
+  // const [nowPlayingMovies, setNowPlayingMovies] = useState();
+  // const [nowPlayingLoading, setNowPlayingLoading] = useState(true);
+  // const navigate = useNavigate();
+
+  // useEffect(() => { // Top Rated API 호출
+  //   async function fetchData() {
+  //     const topRatedRes = await fetch(`${TOP_RATED_API+API_KEY}`);
+  //     const topRatedData = await topRatedRes.json();
+  //     setTopRatedMovies(topRatedData);
+
+  //     setTopRatedLoading(false)
+  //   }
+  //   fetchData()
+  // }, []);
+  
+  // useEffect(() => { // Now Playing API 호출
+  //   async function fetchData() {
+  //     const nowPlayingRes = await fetch(`${NOW_PLAYING_API+API_KEY}`);
+  //     const nowPlayingData = await nowPlayingRes.json();
+  //     setNowPlayingMovies(nowPlayingData);
+
+  //     setNowPlayingLoading(false)
+  //   }
+  //   fetchData()
+  // }, []);
+  
   return (
     <>
       <div className="main-page">
         <div className="inner">
-          <h2 className="section-title">평점순 TOP 20</h2>
-          <Swiper
+        <h2 className="section-title">높은 평점의 영화들</h2>
+          {
+            topRatedLoading ? 'loading...' :
+            <Swiper
             slidesPerView={1}
             spaceBetween={30}
-            // navigation={true}
             navigation={{
               prevEl: '.swiper-button-prev',
               nextEl: '.swiper-button-next',
@@ -43,12 +88,10 @@ function Main() {
             className="mySwiper movie-swiper"
           >
             {
-              movieData.results.map((data) => {
+              topRatedData.map((movie) => {
                 return (
-                  <SwiperSlide key={data.id} onClick={() => {navigate(`Detail/${data.id}`)}}>
-                    <span className="img-box">
-                      <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} />
-                    </span>
+                  <SwiperSlide key={movie.id}>
+                    <MovieCard movie={movie} />
                   </SwiperSlide>
                 )
               })
@@ -56,16 +99,22 @@ function Main() {
             <div className="swiper-button-prev swiper-navigation">이전</div>
             <div className="swiper-button-next swiper-navigation">다음</div>
           </Swiper>
-          <h2 className="section-title">인기순</h2>
-          <ul className="movie-list">
+          }
+          
+          
+          <h2 className="section-title">Now Playing</h2>
+          {
+            nowPlayingLoading ? 'loading...' :
+            <ul className="movie-list">
             {
-              movieData.results.map((data) => {
+              nowPlayingData.map((movie) => {
                 return (
-                  <MovieCard key={data.id} data={data} />
+                  <MovieCard key={movie.id} movie={movie} />
                 )
               })
             }
           </ul>
+          }
         </div>
       </div>
     </>
