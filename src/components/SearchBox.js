@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SearchBox({ setSearchBox }) {
-  // const [searchInp, setSearchInp] = useState("");
   const navigate = useNavigate();
 
   const handleSearchPage = (e) => {

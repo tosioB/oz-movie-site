@@ -1,8 +1,6 @@
 function Bookmark() {
   return (
-    <>
-      <div className="bookmark-page">Bookmark</div>
-    </>
+    <div className="bookmark-page">Bookmark</div>
   )
 }
 

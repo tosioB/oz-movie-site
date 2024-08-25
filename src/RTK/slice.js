@@ -96,7 +96,14 @@ export const nowPlayingMovieSlice = createSlice({
  *   <App />
  * </Provider>
  * 
- * 5. React 컴포넌트에서 사용하기
+ * 5. Seletor 설정(선택사항 - 안써도 사용할 수 있음.)
+ * Detail, Bookmark 페이지에서 영화 데이터를 전부 가져오는것은 비효율적이다.
+ * Detail페이지는 하나의 영화 리스트만 호출하기 위해 사용
+ * Bookmark페이지는 사용자가 마킹한 영화 리스트만 호출하기 위해 사용
+ * 필요한 영화만 선택하여 상태를 반환하기 때문에 효율성이 좋다.
+ * 성능 최적화에 좋다.
+ * 
+ * 6. React 컴포넌트에서 사용하기
  * const dispatch = useDispatch();
  * const { data } = useSelector((state) => state.store에_있는_리듀서_키)
  * useEffect(() => {

@@ -16,24 +16,22 @@ function Search() {
    */
 
   return (
-    <>
-      <div className="search-page">
-        <div className="inner">
-          <h2 className="section-title">검색결과</h2>
-          {
-            <ul className="movie-list">
-              {
-                searchMovie.map((movie) => {
-                  return (
-                    <MovieCard key={movie.id} movie={movie} />
-                  )
-                })
-              }
-            </ul>
-          }
-        </div>
+    <div className="search-page">
+      <div className="inner">
+        <h2 className="section-title">검색결과</h2>
+        {
+          <ul className="movie-list">
+            {
+              searchMovie.map((movie) => {
+                return (
+                  <MovieCard key={movie.id} movie={movie} />
+                )
+              })
+            }
+          </ul>
+        }
       </div>
-    </>
+    </div>
   )
 }
 
