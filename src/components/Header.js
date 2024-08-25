@@ -16,6 +16,7 @@ function Header() {
           <Link to="/Login" className="login-btn join-btn btn">Login</Link>
           <Link to="/SignUp" className="sign-up-btn join-btn btn">SignUp</Link>
           <Link to="/Bookmark" className="bookmark-btn icon-btn">내가 찜한 영화</Link>
+          {/* <Link to="/Search" className="search-btn icon-btn">검색</Link> */}
           <button type="button" className="search-btn icon-btn" onClick={() => (setSearchBox(prev => true))}>검색</button>
         </div>
       </div>

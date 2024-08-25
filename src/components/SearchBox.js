@@ -1,23 +1,36 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useDebounce from "../debounce/debounce";
 
 function SearchBox({ setSearchBox }) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, 1000); // 1초 딜레이
   const navigate = useNavigate();
 
-  const handleSearchPage = (e) => {
-    if (e.target.value === "") { // 검색창이 빈 문자열이면 메인으로 이동
-      navigate("/")
+  // debouncedSearchTerm이 변경될 때마다 호출
+  useEffect(() => {
+    if (debouncedSearchTerm === "") {
+      navigate("/");
     } else {
-      navigate(`/Search?movie=${e.target.value}`); // Search 페이지로 이동 + SearchParams 검색 설정
+      navigate(`/Search?movie=${debouncedSearchTerm}`);
     }
-    
-  }
+  }, [debouncedSearchTerm, navigate]);
+
+  // input의 값이 변경될 때마다 호출
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <div className="search-box">
-      <span className="inp-box" onChange={handleSearchPage}>
-        <input type="text" />
+      <span className="inp-box">
+        <input 
+          type="text"
+          placeholder="영화를 검색하세요."
+          value={searchTerm}
+          onChange={handleChange}
+        />
       </span>
-      <p className="search-exp">검색어를 입력하세요.</p>
       <button type="button" className="icon-btn close-btn" onClick={() => (setSearchBox(prev => false))}>검색창 닫기</button>
     </div>
   )

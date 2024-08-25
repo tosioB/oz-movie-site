@@ -15,7 +15,7 @@ function Main() {
   const { popularData, popularLoading, popularError } = useSelector((state) => state.popularMovies);
   const { topRatedData, topRatedLoading, topRatedError } = useSelector((state) => state.topRatedMovies);
   const { nowPlayingData, nowPlayingLoading, nowPlayingError } = useSelector((state) => state.nowPlayingMovies);
-
+  
   useEffect(() => {
     dispatch(fetchPopularMovies()) // fetchPopularMovies - thunk.js에서 불러옴
     dispatch(fetchTopRatedMovies()) // fetchTopRatedMovies - thunk.js에서 불러옴

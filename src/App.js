@@ -14,7 +14,7 @@ import Header from "./components/Header";
 function App() {
   return (
     <>
-        <Header />
+      <Header />
       <div className="movie-site">
         {/* <nav>
           <Link to="/">Main</Link>
