@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: #FFF;
+}
+::-webkit-scrollbar-thumb { 
+  background-color: rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+html, body {
+  height: 100%;
+  font-size: 14px;
+  background-color: #000;
+  color: #FFF;
+}
+ul, ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #FFF;
+}
+button {
+  color: #FFF;
+}
+#root {
+  height: 100%;
+}

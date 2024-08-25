@@ -1,0 +1,93 @@
+@import './variable.scss';
+
+.header { // header
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: $header-height;
+  background-color: #212121;
+  z-index: 101;
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-size: 28px;
+    color: $main-color;
+  }
+  .pages {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    .bookmark-btn {
+      background-image: url('../../../public/icons/bookmark_off.svg');
+      background-size: 22px;
+      &:hover {
+        background-image: url('../../../public/icons/bookmark_off_white.svg');
+      }
+    }
+    .search-btn {
+      background-image: url('../../../public/icons/header_search_red.svg');
+      background-size: 16px;
+      &:hover {
+        background-image: url('../../../public/icons/header_search_white.svg');
+      }
+    }
+  }
+  .search-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: $search-height;
+    padding: 0 5%;
+    background-color: #212121;
+    .inp-box {
+      width: 100%;
+      max-width: 320px;
+    }
+    .search-exp {
+      font-size: 18px;
+    }
+    .close-btn {
+      position: absolute;
+      right: 48px;
+      top: 24px;
+      background-image: url('../../../public/icons/search_close_red.svg');
+      background-size: 16px;
+      &:hover {
+        background-image: url('../../../public/icons/search_close_white.svg');
+      }
+    }
+  }
+}
+
+@media (max-width: 512px) {
+  .header {
+    .inner {
+      padding: 0 5%;
+    }
+    .pages {
+      gap: 8px;
+      .join-btn {
+        padding: 0 8px;
+        font-size: 14px;
+      }
+    }
+    .search-box {
+      .close-btn {
+        right: 24px;
+        top: calc(100% - 40px);
+      }
+    }
+  }
+}

@@ -2,14 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { IMG_URL } from "../assets/data/movie_key";
 
 function MovieCard({ movie }) {
+  // console.log(movie)
   const navigate = useNavigate();
 
   return (
-    <li onClick={() => {navigate(`Detail/${movie.id}`)}}>
+    <li onClick={() => {navigate(`/Detail/${movie.id}`)}}>
       <span className="img-box">
         <img src={`${IMG_URL + movie.poster_path}`} alt={movie.title} />
       </span>
-      <p className="title">{movie.title}</p>
+      <div className="text-box">
+        <p className="title">{movie.title}</p>
+        <p className="average">평점: {movie.vote_average}</p>
+      </div>
     </li>
   )
 }

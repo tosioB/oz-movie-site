@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
+import "../assets/style/header.scss";
 
 function Header() {
   const [searchBox, setSearchBox] = useState(false)
@@ -9,8 +10,8 @@ function Header() {
     <>
       <header className="header">
         <div className="inner">
-          <h1>
-            <Link to="/" className="logo">로고</Link>
+          <h1 className="logo">
+            <Link to="/" className="logo">DVING</Link>
           </h1>
           <div className="pages">
             <Link to="/Login" className="login-btn join-btn btn">Login</Link>

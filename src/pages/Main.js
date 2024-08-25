@@ -15,7 +15,7 @@ function Main() {
   const { popularData, popularLoading, popularError } = useSelector((state) => state.popularMovies);
   const { topRatedData, topRatedLoading, topRatedError } = useSelector((state) => state.topRatedMovies);
   const { nowPlayingData, nowPlayingLoading, nowPlayingError } = useSelector((state) => state.nowPlayingMovies);
-  console.log(popularData)
+  // console.log(popularData)
   // console.log(topRatedData)
 
   useEffect(() => {
@@ -154,18 +154,18 @@ function Main() {
           {/* NOW PLAYING */}
           <section>
             <h2 className="section-title">Now Playing</h2>
-              {
-                nowPlayingLoading ? 'loading...' :
-                <ul className="movie-list">
-                  {
-                    nowPlayingData.map((movie) => {
-                      return (
-                        <MovieCard key={movie.id} movie={movie} />
-                      )
-                    })
-                  }
-                </ul>
-              }
+            {
+              nowPlayingLoading ? 'loading...' :
+              <ul className="movie-list">
+                {
+                  nowPlayingData.map((movie) => {
+                    return (
+                      <MovieCard key={movie.id} movie={movie} />
+                    )
+                  })
+                }
+              </ul>
+            }
           </section>
         </div>
       </div>

@@ -1,8 +1,9 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 // pages
 import Main from "./pages/Main";
 import Detail from "./pages/Detail";
+import Search from "./pages/Search";
 import Bookmark from "./pages/Bookmark";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -13,8 +14,8 @@ import Header from "./components/Header";
 function App() {
   return (
     <>
-      <div className="movie-site">
         <Header />
+      <div className="movie-site">
         {/* <nav>
           <Link to="/">Main</Link>
           <Link to="/Detail">Detail</Link>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Detail/:id" element={<Detail />} />
+          <Route path="/Search" element={<Search />} />
           <Route path="/Bookmark" element={<Bookmark />} />
         </Routes>
       </div>

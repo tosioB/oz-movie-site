@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_URL } from "../assets/data/movie_key";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchNowPlayingMovies, fetchTopRatedMovies } from "../RTK/thunk";
+import { useSelector } from "react-redux";
 import { selectorMovieId } from "../RTK/selector";
 
 function Detail() {
   const movieParams = useParams();
   const movieData = useSelector(selectorMovieId(Number(movieParams.id))); // movieParams.id의 id는 App.js의 route 컴포넌트의 paht='Detail/:id'이다.
+  console.log(movieParams);
 
   return (
     <>
