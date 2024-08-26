@@ -9,6 +9,7 @@ import './assets/style/page.scss' // 페이지
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 import { Provider } from 'react-redux';
 import { store } from './RTK/store';
 

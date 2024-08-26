@@ -33,19 +33,22 @@
     transition: all 0.3s;
   }
 }
-input[type="text"],
-input[type="email"],
-input[type="password"] { // input
-  width: 100%;
-  height: 40px;
-  padding: 0 12px;
-  border: 1px solid;
-  border-color: $color-gray;
-  border-radius: 8px;
-  &:focus {
-    outline: 1px solid;
-    outline-color: $color-black;
-    outline-offset: -1px;
+.inp-box {
+  display: block;
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] { // input
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid;
+    border-color: $color-gray;
+    border-radius: 8px;
+    &:focus {
+      outline: 1px solid;
+      outline-color: $color-black;
+      outline-offset: -1px;
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { POPULAR_API, TOP_RATED_API, NOW_PLAYING_API } from "../assets/data/movie_key";
+import { POPULAR_API, TOP_RATED_API, NOW_PLAYING_API, SEARCH_API } from "../assets/data/movie_key";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -30,6 +30,14 @@ export const fetchNowPlayingMovies = createAsyncThunk( // createAsyncThunk - Red
   }
 )
 
+export const fetchSearchMovies = createAsyncThunk( // createAsyncThunk - Redux Toolkit에서 비동기 작업을 처리할 때 사용하는 함수
+  'movies/fetchSearchMovies', // 이 작업을 식별하는 문자열 액션 타입
+  async () => { // 비동기 작업을 수행하는 함수
+    const searchedAPI = await fetch(`${SEARCH_API}&api_key=${apiKey}`);
+    const searchedData = await searchedAPI.json();
+    return searchedData.results;
+  }
+)
 /** Redux Toolkit - fetch
  * 1. Thunk 정의
  * - API를 호출하고 결과를 처리하는 비동기 액션을 정의

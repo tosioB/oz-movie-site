@@ -3,23 +3,28 @@ import MovieCard from "../components/MovieCard";
 import { Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies } from "../RTK/thunk";
+import { fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies, fetchSearchMovies } from "../RTK/thunk";
 
 function Main() {
   const dispatch = useDispatch();
-
+  
   // popularData, popularLoading, popularError - slice.js에서 initialState의 key값과 동일해야함
-  // topRatedData, topRatedLoading, topRatedError - slice.js에서 initialState의 key값과 동일해야함
-  // nowPlayingData, nowPlayingLoading, nowPlayingError - slice.js에서 initialState의 key값과 동일해야함
-  // topRatedMovies - store.js에서 가져옴
+  // popularMovies - store.js에서 가져옴
   const { popularData, popularLoading, popularError } = useSelector((state) => state.popularMovies);
+
+  // topRatedData, topRatedLoading, topRatedError - slice.js에서 initialState의 key값과 동일해야함
+  // topRatedMovies - store.js에서 가져옴
   const { topRatedData, topRatedLoading, topRatedError } = useSelector((state) => state.topRatedMovies);
+
+  // nowPlayingData, nowPlayingLoading, nowPlayingError - slice.js에서 initialState의 key값과 동일해야함
+  // nowPlayingMovies - store.js에서 가져옴
   const { nowPlayingData, nowPlayingLoading, nowPlayingError } = useSelector((state) => state.nowPlayingMovies);
   
   useEffect(() => {
     dispatch(fetchPopularMovies()) // fetchPopularMovies - thunk.js에서 불러옴
     dispatch(fetchTopRatedMovies()) // fetchTopRatedMovies - thunk.js에서 불러옴
     dispatch(fetchNowPlayingMovies()) // fetchNowPlayingMovies - thunk.js에서 불러옴
+    dispatch(fetchSearchMovies()) // fetchSearchMovies - thunk.js에서 불러옴
   }, [dispatch]);
   
   return (
@@ -78,8 +83,8 @@ function Main() {
           {
             topRatedLoading ? 'loading...' :
               <Swiper
-              slidesPerView={1}
-              spaceBetween={30}
+              slidesPerView={8}
+              spaceBetween={10}
               navigation={{
                 prevEl: '.swiper-button-prev',
                 nextEl: '.swiper-button-next',
