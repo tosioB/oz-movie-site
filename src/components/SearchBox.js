@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useDebounce from "../debounce/debounce";
 
@@ -14,7 +14,7 @@ function SearchBox({ setSearchBox }) {
     } else {
       navigate(`/Search?movie=${debouncedSearchTerm}`);
     }
-  }, [debouncedSearchTerm, navigate]);
+  }, [debouncedSearchTerm]);
 
   // input의 값이 변경될 때마다 호출
   const handleChange = (e) => {
