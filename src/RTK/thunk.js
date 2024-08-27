@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { POPULAR_API, TOP_RATED_API, NOW_PLAYING_API } from "../assets/data/movie_key";
 
-const apiKey = process.env.REACT_APP_API_KEY;
+const token2 = process.env.REACT_APP_API_TOKEN2;
 
 export const fetchPopularMovies = createAsyncThunk( // createAsyncThunk - Redux Toolkit에서 비동기 작업을 처리할 때 사용하는 함수
   'movies/fetchPopularMovies', // 이 작업을 식별하는 문자열 액션 타입
   async () => { // 비동기 작업을 수행하는 함수
-    const popularResAPI = await fetch(`${POPULAR_API}&api_key=${apiKey}`);
+    const popularResAPI = await fetch(`${POPULAR_API}&api_key=${token2}`);
     const popularData = await popularResAPI.json();
     return popularData.results;
   }
@@ -15,7 +15,7 @@ export const fetchPopularMovies = createAsyncThunk( // createAsyncThunk - Redux 
 export const fetchTopRatedMovies = createAsyncThunk( // createAsyncThunk - Redux Toolkit에서 비동기 작업을 처리할 때 사용하는 함수
   'movies/fetchTopRatedMovies', // 이 작업을 식별하는 문자열 액션 타입
   async () => { // 비동기 작업을 수행하는 함수
-    const topRatedResAPI = await fetch(`${TOP_RATED_API}&api_key=${apiKey}`);
+    const topRatedResAPI = await fetch(`${TOP_RATED_API}&api_key=${token2}`);
     const topRatedData = await topRatedResAPI.json();
     return topRatedData.results;
   }
@@ -24,21 +24,11 @@ export const fetchTopRatedMovies = createAsyncThunk( // createAsyncThunk - Redux
 export const fetchNowPlayingMovies = createAsyncThunk( // createAsyncThunk - Redux Toolkit에서 비동기 작업을 처리할 때 사용하는 함수
   'movies/fetchNowPlayingMovies', // 이 작업을 식별하는 문자열 액션 타입
   async () => { // 비동기 작업을 수행하는 함수
-    const nowPlayingsAPI = await fetch(`${NOW_PLAYING_API}&api_key=${apiKey}`);
+    const nowPlayingsAPI = await fetch(`${NOW_PLAYING_API}&api_key=${token2}`);
     const nowPlayingData = await nowPlayingsAPI.json();
     return nowPlayingData.results;
   }
 )
-
-// export const fetchSearchMovies = createAsyncThunk( // createAsyncThunk - Redux Toolkit에서 비동기 작업을 처리할 때 사용하는 함수
-//   'movies/fetchSearchMovies', // 이 작업을 식별하는 문자열 액션 타입
-//   async (value) => { // 비동기 작업을 수행하는 함수
-//     const searchedAPI = await fetch(`https://api.themoviedb.org/3/search/movie?query=${value}`);
-//     console.log(searchedAPI)
-//     const searchedData = await searchedAPI.json();
-//     return searchedData.results;
-//   }
-// )
 
 /** Redux Toolkit - fetch
  * 1. Thunk 정의

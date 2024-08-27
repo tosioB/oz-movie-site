@@ -5,6 +5,7 @@ import Main from "./pages/Main";
 import Detail from "./pages/Detail";
 import Search from "./pages/Search";
 import Bookmark from "./pages/Bookmark";
+import Mypage from "./pages/Mypage";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Detail/:id" element={<Detail />} />
           <Route path="/Search" element={<Search />} />
           <Route path="/Bookmark" element={<Bookmark />} />
+          <Route path="/Mypage" element={<Mypage />} />
         </Routes>
       </div>
     </>

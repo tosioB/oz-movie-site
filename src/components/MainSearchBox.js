@@ -3,27 +3,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import MovieCard from "./MovieCard";
 import { Scrollbar } from "swiper/modules";
 import useDebounce from "../debounce/debounce";
+const token1 = process.env.REACT_APP_API_TOKEN1;
 
 function MainSearchBox({ setMainSearchBoxStatus }) {
   const [searchValue, setSearchValue] = useState("");
-  // const [debouncedSearchValue, setDebouncedSearchValue] = useState(searchValue)
-  const debouncedSearchValue = useDebounce(searchValue, 1000)
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchData, setSearchData] = useState();
-  console.log(searchData)
+  const debouncedSearchValue = useDebounce(searchValue, 1000)
   
   const inputChangeValue = (e) => {
     setSearchValue(e.target.value)
   }
   
   useEffect(() => {
-    const apiKey = process.env.REACT_APP_API_KEY;
-    
     const options = {
       // method: 'GET',
       headers: {
         // accept: 'application/json',
-        Authorization: `Bearer ${apiKey}`
+        Authorization: `Bearer ${token1}`
       }
     };
 
