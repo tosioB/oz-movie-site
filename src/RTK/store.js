@@ -1,12 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { popularMovieSlice, topRatedMovieSlice, nowPlayingMovieSlice, searchMovieSlice } from "./slice";
+import { popularMovieSlice, topRatedMovieSlice, nowPlayingMovieSlice } from "./slice";
 
 export const store = configureStore({
   reducer: {
     popularMovies: popularMovieSlice.reducer, // popularMovieSlice - slice.js에서 가져옴
     topRatedMovies: topRatedMovieSlice.reducer, // topRatedMovieSlice - slice.js에서 가져옴
     nowPlayingMovies: nowPlayingMovieSlice.reducer, // nowPlayingMovieSlice - slice.js에서 가져옴
-    searchMovies: searchMovieSlice.reducer, // searchMovieSlice - slice.js에서 가져옴
   }
 })
 

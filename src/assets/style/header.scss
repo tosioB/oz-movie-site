@@ -70,12 +70,12 @@
       }
     }
   }
-  .search-box2 {
+  .main-search-box {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
-    padding: 5%;
+    padding: 60px 5%;
     background-color: #212121;
     .container {
       max-width: 1280px;
@@ -84,11 +84,10 @@
     .search-movie-list {
       margin-top: 16px;
       .mySwiper {
-        padding-bottom: 20px;
         .swiper-wrapper {
-          // height: calc(($search-movie-list-height * 2) + 8px);
           .swiper-slide {
             width: auto;
+            cursor: pointer;
           }
           li {
             height: $search-movie-list-height;
@@ -113,13 +112,6 @@
           }
         }
       }
-    //   display: flex;
-    //   flex-wrap: wrap;
-    //   justify-content: center;
-    //   gap: 8px;
-    //   margin-top: 16px;
-    //   height: calc($search-movie-list-height * 2);
-    //   overflow: auto;
       
     }
     .close-btn {

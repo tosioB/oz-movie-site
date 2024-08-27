@@ -3,7 +3,7 @@ import MovieCard from "../components/MovieCard";
 import { Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies, fetchSearchMovies } from "../RTK/thunk";
+import { fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies } from "../RTK/thunk";
 
 function Main() {
   const dispatch = useDispatch();
@@ -19,12 +19,11 @@ function Main() {
   // nowPlayingData, nowPlayingLoading, nowPlayingError - slice.js에서 initialState의 key값과 동일해야함
   // nowPlayingMovies - store.js에서 가져옴
   const { nowPlayingData, nowPlayingLoading, nowPlayingError } = useSelector((state) => state.nowPlayingMovies);
-  
+
   useEffect(() => {
     dispatch(fetchPopularMovies()) // fetchPopularMovies - thunk.js에서 불러옴
     dispatch(fetchTopRatedMovies()) // fetchTopRatedMovies - thunk.js에서 불러옴
     dispatch(fetchNowPlayingMovies()) // fetchNowPlayingMovies - thunk.js에서 불러옴
-    dispatch(fetchSearchMovies()) // fetchSearchMovies - thunk.js에서 불러옴
   }, [dispatch]);
   
   return (
@@ -63,7 +62,7 @@ function Main() {
               className="mySwiper movie-swiper"
             >
               {
-                popularData.map((movie) => {
+                popularData?.map((movie) => {
                   return (
                     <SwiperSlide key={movie.id}>
                       <MovieCard movie={movie} />
@@ -110,7 +109,7 @@ function Main() {
               className="mySwiper movie-swiper"
             >
               {
-                topRatedData.map((movie) => {
+                topRatedData?.map((movie) => {
                   return (
                     <SwiperSlide key={movie.id}>
                       <MovieCard movie={movie} />
@@ -131,7 +130,7 @@ function Main() {
             nowPlayingLoading ? 'loading...' :
             <ul className="movie-list">
               {
-                nowPlayingData.map((movie) => {
+                nowPlayingData?.map((movie) => {
                   return (
                     <MovieCard key={movie.id} movie={movie} />
                   )

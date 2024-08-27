@@ -6,7 +6,7 @@ function MovieCard({ movie }) {
   const navigate = useNavigate();
 
   return (
-    <li onClick={() => {navigate(`/Detail/${movie.id}`)}}>
+    <li className="movie-card" onClick={() => {navigate(`/Detail/${movie.id}`)}}>
       <span className="img-box">
         <img src={`${IMG_URL + movie.poster_path}`} alt={movie.title} />
       </span>

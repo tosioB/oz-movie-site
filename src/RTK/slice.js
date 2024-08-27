@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies, fetchSearchMovies } from "./thunk";
+import { fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies } from "./thunk";
 
 export const popularMovieSlice = createSlice({
   name: 'popularMovies',
@@ -72,31 +72,6 @@ export const nowPlayingMovieSlice = createSlice({
       .addCase(fetchNowPlayingMovies.rejected, (state, action) => { // reject - 불러오기 실패
         state.nowPlayingLoading = true; // createSlice의 initialState loading은 true
         state.nowPlayingError = action.error.message;
-      })
-  }
-})
-
-export const searchMovieSlice = createSlice({
-  name: 'searchMovies',
-  initialState: {
-    searchData: [], // 영화의 초기값을 담아줄 빈 배열
-    searchLoading: true, // 호출하는 동안의 로딩상태
-    searchError: null,
-  },
-  reducers: {}, // reducers - 동기적으로 상태를 변경할 때 사용
-  extraReducers: (builder) => { // extraReducers - 비동기적으로 상태를 변경할 때 사용
-    builder
-      // fetchSearchMovies - thunk.js에서 가져옴
-      .addCase(fetchSearchMovies.pending, (state) => { // pending - 처리중
-        state.searchLoading = true; // createSlice의 initialState loading은 true
-      })
-      .addCase(fetchSearchMovies.fulfilled, (state, action) => { // fulfilled - 불러오기 성공
-        state.searchData = action.payload;
-        state.searchLoading = false; // createSlice의 initialState loading은 false
-      })
-      .addCase(fetchSearchMovies.rejected, (state, action) => { // reject - 불러오기 실패
-        state.searchLoading = true; // createSlice의 initialState loading은 true
-        state.searchError = action.error.message;
       })
   }
 })
