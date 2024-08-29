@@ -1,8 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient.js'; // Supabase 클라이언트 가져오기
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate()
 
   const onSubmit = async (data) => {
     const { email, password } = data;
@@ -17,6 +19,7 @@ function Login() {
       console.error('Login error:', error.message);
       alert(error.message);
     } else {
+      navigate("/");
       alert('로그인 성공!');
       // 로그인 성공 후 페이지 리다이렉션이나 다른 액션을 추가할 수 있다.
     }

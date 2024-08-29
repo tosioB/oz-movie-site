@@ -37,3 +37,11 @@ function App() {
 }
 
 export default App;
+
+/** 메모
+ * 다크모드
+ * 무한스크롤
+ * 탑버튼
+ * 검색 api 상세페이지 따로 만들기(state)
+ * ...
+ */

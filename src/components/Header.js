@@ -32,7 +32,7 @@ function Header() {
   }, []);
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    await supabase.auth.signOut(); // signOut - 수파베이스에서 제공하는 메서드
     setUser(null); // 로그아웃 후 상태 초기화
   };
 
