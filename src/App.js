@@ -8,9 +8,11 @@ import Bookmark from "./pages/Bookmark";
 import Mypage from "./pages/Mypage";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import UpcomingMovie from "./pages/UpcomingMovie";
 
 // components
 import Header from "./components/Header";
+import MainDetail from "./pages/MainDetail";
 
 function App() {
   return (
@@ -26,10 +28,27 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/Detail/:id" element={<Detail />} />
-          <Route path="/Search" element={<Search />} />
           <Route path="/Bookmark" element={<Bookmark />} />
           <Route path="/Mypage" element={<Mypage />} />
+
+          {/* 검색이 두개인 이유!!! */}
+          {/* TMDB Popular, Now Playing, Top Rated 호출(Search, Detail)
+              - Redux Toolkit 사용해서 호출, 전역으로 영화 데이터를 관리
+              - selector을 사용해 검색페이지와 상세페이지에 모든 영화데이터를 불러오는것이 아닌
+              - 화면에 필요한 데이터만 호출 
+              (Redux Toolkit - thunk, slice, store, selector 학습 목적)
+          */}
+          <Route path="/Search" element={<Search />} />
+          <Route path="/Detail/:id" element={<Detail />} />
+
+
+
+          {/* TMDB Search api 사용(UpcomingMovie, MainDetail)
+              - state를 사용해 클릭한 영화 정보를 상세페이지에 넘기고 상세페이지에서 useLocation을 사용해 영화 정보를 받아옴
+              (Search api, state, useLocation 학습 목적)
+          */}
+          <Route path="/MainDetail" element={<MainDetail />} />
+          <Route path="/UpcomingMovie" element={<UpcomingMovie />} />
         </Routes>
       </div>
     </>

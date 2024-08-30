@@ -44,9 +44,9 @@ function Header() {
         </h1>
         <div className="pages">
           <Link to="/Bookmark" className="bookmark-btn icon-btn">내가 찜한 영화</Link>
-          <button type="button" className="search-btn icon-btn" onClick={() => (setSearchBox(prev => true))}>검색</button>
-          <button type="button" className="search-btn icon-btn" onClick={() => (setMainSearchBoxStatus(prev => true))}>검색</button>
-          
+          <button type="button" className="search-btn icon-btn" onClick={() => (setSearchBox(true))}>검색</button>
+          <button type="button" className="search-btn icon-btn" onClick={() => (setMainSearchBoxStatus(true))}>검색</button>
+          <Link to="/UpcomingMovie" className="btn">개봉예정작</Link>
           {
             user ? (
             <>

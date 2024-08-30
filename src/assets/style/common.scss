@@ -1,5 +1,10 @@
 @import './variable.scss';
 
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
 .inner { // inner
   width: 100%;
   min-width: 320px;

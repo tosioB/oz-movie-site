@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import MovieCard from "./MovieCard";
 import { Scrollbar } from "swiper/modules";
 import useDebounce from "../debounce/debounce";
+import { IMG_URL } from "../assets/data/movie_key";
+import { Link } from "react-router-dom";
 const token1 = process.env.REACT_APP_API_TOKEN1;
 
 function MainSearchBox({ setMainSearchBoxStatus }) {
@@ -37,17 +39,19 @@ function MainSearchBox({ setMainSearchBoxStatus }) {
     <div className="main-search-box">
       <div className="container">
         <span className="inp-box">
-          <input 
+          <input
             type="text"
             placeholder="영화를 검색하세요."
             value={searchValue}
             onChange={inputChangeValue}
           />
         </span>
-        <button type="button" className="icon-btn close-btn" onClick={() => (setMainSearchBoxStatus(prev => false))}>검색창 닫기</button>
-        <ul className="search-movie-list">
+        <div className="btn-box">
+          <button type="button" className="icon-btn close-btn" onClick={() => (setMainSearchBoxStatus(prev => false))}>검색창 닫기</button>
+        </div>
+        <div className="search-movie-list">
           {
-            searchLoading ? 
+            searchLoading ?
             <Swiper
               slidesPerView={'auto'}
               spaceBetween={8}
@@ -61,14 +65,28 @@ function MainSearchBox({ setMainSearchBoxStatus }) {
                 searchData?.results?.map((movie) => {
                   return (
                     <SwiperSlide key={movie.id}>
-                      <MovieCard movie={movie} />
+                      <Link
+                        to='/MainDetail'
+                        onClick={() => (setMainSearchBoxStatus(prev => false))}
+                        state={{
+                          backdrop_path: movie.backdrop_path,
+                          title: movie.title,
+                          vote_average: movie.vote_average,
+                          poster_path: movie.poster_path,
+                          overview: movie.overview
+                        }}
+                      >
+                        <span className="img-box">
+                          <img src={IMG_URL+movie.poster_path} / >
+                        </span>
+                      </Link>
                     </SwiperSlide>
                   )
                 })
               }
             </Swiper> : null
           }
-        </ul>
+        </div>
       </div>
     </div>
   )
