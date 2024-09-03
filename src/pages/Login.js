@@ -19,8 +19,8 @@ function Login() {
       console.error('Login error:', error.message);
       alert(error.message);
     } else {
-      navigate("/");
       alert('로그인 성공!');
+      navigate("/");
       // 로그인 성공 후 페이지 리다이렉션이나 다른 액션을 추가할 수 있다.
     }
   };
