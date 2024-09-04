@@ -1,25 +1,7 @@
 import { useForm } from 'react-hook-form';
-import { supabase } from '../supabaseClient.js';
 
 function SignUp() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = async (data) => {
-    const { name, email, password } = data;
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          name,
-        },
-      },
-    });
-    if (error) {
-      alert(error.message);
-    } else {
-        alert('회원가입에 성공했습니다! 이메일을 확인하세요.');
-    }
-  };
 
   // 비밀번호 확인 필드의 일치 여부를 체크
   const password = watch("password");
@@ -28,7 +10,7 @@ function SignUp() {
     <div className="sign-up-page join-page">
       <div className="join-box">
         <h2 className="title">회원가입</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form>
           <div className="form-box">
             <span className="inp-box">
               <input

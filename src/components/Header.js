@@ -3,38 +3,12 @@ import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
 import "../assets/style/header.scss";
 import MainSearchBox from "./MainSearchBox";
-import { supabase } from "../supabaseClient";
 
 function Header() {
   const [searchBox, setSearchBox] = useState(false);
   const [mainSearchBoxStatus, setMainSearchBoxStatus] = useState(false);
 
   const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    // 현재 세션 가져오기
-    const fetchSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setUser(session?.user ?? null);
-    };
-
-    fetchSession();
-
-    // 인증 상태 변경 구독 설정
-    const { data: subscription } = supabase.auth.onAuthStateChange((event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    // 컴포넌트 언마운트 시 구독 해제
-    return () => {
-      subscription?.unsubscribe();
-    };
-  }, []);
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut(); // signOut - 수파베이스에서 제공하는 메서드
-    setUser(null); // 로그아웃 후 상태 초기화
-  };
 
   return (
     <header className="header">
@@ -51,7 +25,7 @@ function Header() {
             user ? (
             <>
               <Link to="/Mypage" className="mypage-btn icon-btn">마이페이지</Link>
-              <button className="login-btn join-btn btn" onClick={handleLogout}>로그아웃</button>
+              <button className="login-btn join-btn btn">로그아웃</button>
             </>
             ) : 
             (
