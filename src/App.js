@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-
+// 깃연결 확인
 // pages
 import Main from "./pages/Main";
 import Detail from "./pages/Detail";
