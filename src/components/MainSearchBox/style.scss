@@ -1,0 +1,59 @@
+@import "/src/assets/style/variable.scss";
+
+.main-search-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 60px 5% 36px;
+  background-color: #212121;
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .search-movie-list {
+    .mySwiper {
+      height: 100%;
+      padding-bottom: 10px;
+      .swiper-wrapper {
+        .swiper-slide {
+          width: auto;
+          cursor: pointer;
+          .img-box {
+            display: block;
+            height: 150px;
+            img {
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+      .swiper-scrollbar {
+        bottom: 0;
+        background-color: rgba(255, 21, 60, 0.5);
+        .swiper-scrollbar-drag {
+          background-color: $main-color;
+        }
+      }
+    }
+  }
+  .btn-box {
+    position: absolute;
+    right: 5%;
+    top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .close-btn {
+      background-image: url("../../../public/icons/search_close_red.svg");
+      background-size: 16px;
+      &:hover {
+        background-image: url("../../../public/icons/search_close_white.svg");
+      }
+    }
+  }
+}

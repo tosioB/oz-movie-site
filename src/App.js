@@ -1,18 +1,20 @@
 import { Route, Routes } from "react-router-dom";
 // 깃연결 확인
 // pages
-import Main from "./pages/Main";
-import Detail from "./pages/Detail";
-import Search from "./pages/Search";
-import Bookmark from "./pages/Bookmark";
-import Mypage from "./pages/Mypage";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import UpcomingMovie from "./pages/UpcomingMovie";
+import Main from "./pages/Main/Main";
+// import Detail from "./pages/Detail";
+// import Search from "./pages/Search";
+// import Bookmark from "./pages/Bookmark/Bookmark";
+import Mypage from "./pages/Mypage/Mypage";
+import Login from "./pages/Join/Login";
+import SignUp from "./pages/SignUp/SignUp";
+import UpcomingMovie from "./pages/UpcomingMovie/UpcomingMovie";
 
 // components
-import Header from "./components/Header";
-import MainDetail from "./pages/MainDetail";
+// import MainDetail from "./pages/MainDetail";
+import Header from "./components/Header/Header";
+import Detail from "./pages/Detail/Detail";
+import Bookmark from "./pages/Bookmark/Bookmark";
 
 function App() {
   return (
@@ -38,16 +40,14 @@ function App() {
               - 화면에 필요한 데이터만 호출 
               (Redux Toolkit - thunk, slice, store, selector 학습 목적)
           */}
-          <Route path="/Search" element={<Search />} />
+          {/* <Route path="/Search" element={<Search />} /> */}
           <Route path="/Detail/:id" element={<Detail />} />
-
-
 
           {/* TMDB Search api 사용(UpcomingMovie, MainDetail)
               - state를 사용해 클릭한 영화 정보를 상세페이지에 넘기고 상세페이지에서 useLocation을 사용해 영화 정보를 받아옴
               (Search api, state, useLocation 학습 목적)
           */}
-          <Route path="/MainDetail" element={<MainDetail />} />
+          {/* <Route path="/MainDetail" element={<MainDetail />} /> */}
           <Route path="/UpcomingMovie" element={<UpcomingMovie />} />
         </Routes>
       </div>

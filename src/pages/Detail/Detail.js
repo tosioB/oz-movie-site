@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import { IMG_URL } from "../assets/data/movie_key";
 import { useSelector } from "react-redux";
-import { selectorMovieId } from "../RTK/selector";
+import { IMG_URL } from "../../assets/data/movie_key";
+import { selectorMovieId } from "../../RTK/selector";
+import "./style.scss";
 
 function Detail() {
   const movieParams = useParams();
   const movieData = useSelector(selectorMovieId(Number(movieParams.id))); // movieParams.id의 id는 App.js의 route 컴포넌트의 paht='Detail/:id'이다.
-  console.log(movieParams);
 
   return (
     <div className="detail-page">
@@ -30,12 +30,12 @@ function Detail() {
               }
             </ul> */}
           </div>
-          
+
           <p className="desc">{movieData?.overview}</p>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Detail;

@@ -1,0 +1,42 @@
+@import "./variable.scss";
+
+.join-page {
+  // join-page(login/sign-up)
+  .join-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 512px;
+    padding: 48px 32px;
+    background-color: $color-white;
+    border-radius: 28px;
+    .title {
+      font-size: 24px;
+      color: $color-black;
+    }
+    .form-box {
+      display: flex;
+      flex-direction: column;
+      margin-top: 32px;
+      gap: 24px;
+      .inp-box {
+        .error-msg {
+          margin-top: 4px;
+          font-size: 12px;
+          color: $main-color;
+        }
+      }
+      .join-btn {
+        height: 48px;
+        margin-top: 40px;
+        background-color: $main-color;
+        border: none;
+        border-radius: 8px;
+        color: $color-white;
+        cursor: pointer;
+      }
+    }
+  }
+}
