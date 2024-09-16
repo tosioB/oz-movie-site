@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import MovieCard from "../../components/MovieCard/MovieCard";
+import "./style.scss";
 const token1 = process.env.REACT_APP_API_TOKEN1;
 
 function UpcomingMovie() {

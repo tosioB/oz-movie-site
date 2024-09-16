@@ -11,7 +11,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import UpcomingMovie from "./pages/UpcomingMovie/UpcomingMovie";
 
 // components
-// import MainDetail from "./pages/MainDetail";
+import MainDetail from "./pages/MainDetail/MainDetail";
 import Header from "./components/Header/Header";
 import Detail from "./pages/Detail/Detail";
 import Bookmark from "./pages/Bookmark/Bookmark";
@@ -47,7 +47,7 @@ function App() {
               - state를 사용해 클릭한 영화 정보를 상세페이지에 넘기고 상세페이지에서 useLocation을 사용해 영화 정보를 받아옴
               (Search api, state, useLocation 학습 목적)
           */}
-          {/* <Route path="/MainDetail" element={<MainDetail />} /> */}
+          <Route path="/MainDetail" element={<MainDetail />} />
           <Route path="/UpcomingMovie" element={<UpcomingMovie />} />
         </Routes>
       </div>

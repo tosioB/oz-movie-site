@@ -1,13 +1,13 @@
 import { useLocation } from "react-router-dom";
-import { IMG_URL } from "../assets/data/movie_key";
-// import { IMG_URL } from "../assets/data/movie_key";
+import { IMG_URL } from "../../assets/data/movie_key";
+import "./style.scss";
 
 function MainDetail() {
   const location = useLocation();
   console.log(location);
 
   return (
-    <div className="detail-page">
+    <div className="main-detail-page">
       <span className="bg-img-box">
         <img src={IMG_URL + location.state?.backdrop_path} />
       </span>
